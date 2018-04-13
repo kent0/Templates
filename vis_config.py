@@ -1,3 +1,5 @@
+# set an alias e.g., vis='visit -nosplash -s ~/path/to/vis_config.py'
+
 from glob import glob
 
 dbs = glob('*.nek5000')

@@ -1,7 +1,7 @@
 all: pdf
 
-pdf: *.tex
-	pdflatex *.tex; open -a Preview; open -a Terminal
+pdf: main.tex head.tex body.tex
+	pdflatex main && open -g -a Skim main.pdf
 
 clean:
-	*.{pdf,log,aux}
+	rm main.{pdf,log,aux,out}

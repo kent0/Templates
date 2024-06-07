@@ -1,12 +1,8 @@
 c-----------------------------------------------------------------------
-      subroutine uservp(ix,iy,iz,eg) ! set variable properties
+      subroutine uservp(ix,iy,iz,ieg)
 
       include 'SIZE'
-      include 'TOTAL'
       include 'NEKUSE'
-
-      integer e,eg
-c     e = gllel(eg)
 
       udiff  = 0.0
       utrans = 0.0
@@ -14,18 +10,10 @@ c     e = gllel(eg)
       return
       end
 c-----------------------------------------------------------------------
-      subroutine userf(ix,iy,iz,eg) ! set acceleration term
-c
-c     Note: this is an acceleration term, NOT a force!
-c     Thus, ffx will subsequently be multiplied by rho(x,t).
-c
+      subroutine userf(ix,iy,iz,ieg)
 
       include 'SIZE'
-      include 'TOTAL'
       include 'NEKUSE'
-
-      integer e,eg
-c     e = gllel(eg)
 
       ffx = 0.0
       ffy = 0.0
@@ -34,31 +22,20 @@ c     e = gllel(eg)
       return
       end
 c-----------------------------------------------------------------------
-      subroutine userq(ix,iy,iz,eg) ! set source term
+      subroutine userq(ix,iy,iz,ieg)
 
       include 'SIZE'
-      include 'TOTAL'
       include 'NEKUSE'
 
-      integer e,eg
-c     e = gllel(eg)
-
-      qvol   = 0.0
+      qvol = 0.0
 
       return
       end
 c-----------------------------------------------------------------------
-      subroutine userbc(ix,iy,iz,iside,eg) ! set up boundary conditions
-c
-c     NOTE ::: This subroutine MAY NOT be called by every process
-c
+      subroutine userbc(ix,iy,iz,iside,ieg)
 
       include 'SIZE'
-      include 'TOTAL'
       include 'NEKUSE'
-
-      integer e,eg
-c     if (cbc(iside,gllel(eg),ifield).eq.'v01')
 
       ux   = 0.0
       uy   = 0.0
@@ -68,13 +45,10 @@ c     if (cbc(iside,gllel(eg),ifield).eq.'v01')
       return
       end
 c-----------------------------------------------------------------------
-      subroutine useric(ix,iy,iz,eg) ! set up initial conditions
+      subroutine useric(ix,iy,iz,ieg)
 
       include 'SIZE'
-      include 'TOTAL'
       include 'NEKUSE'
-
-      integer e,eg
 
       ux   = 0.0
       uy   = 0.0
@@ -86,39 +60,28 @@ c-----------------------------------------------------------------------
 c-----------------------------------------------------------------------
       subroutine userchk
 
-      include 'SIZE'
-      include 'TOTAL'
-
       return
       end
 c-----------------------------------------------------------------------
-      subroutine userqtl ! Set thermal divergence
+      subroutine userqtl
 
       call userqtl_scig 
 
       return
       end
 c-----------------------------------------------------------------------
-      subroutine usrdat   ! This routine to modify element vertices
-
-      include 'SIZE'
-      include 'TOTAL'
+      subroutine usrdat
 
       return
       end
 c-----------------------------------------------------------------------
-      subroutine usrdat2  ! This routine to modify mesh coordinates
-
-      include 'SIZE'
-      include 'TOTAL'
+      subroutine usrdat2
 
       return
       end
 c-----------------------------------------------------------------------
       subroutine usrdat3
 
-      include 'SIZE'
-      include 'TOTAL'
-
       return
       end
+c-----------------------------------------------------------------------
